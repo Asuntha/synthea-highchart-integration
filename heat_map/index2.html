@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+    <title>Chart</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="http://code.highcharts.com/highcharts.js" type="text/javascript"></script>
+    <script src="http://code.highcharts.com/modules/heatmap.js" type="text/javascript"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    var heat;
+    $(function () {
+
+        heat = new Highcharts.Chart({
+        chart: {
+                renderTo: 'container',
+                type: 'heatmap',
+                marginTop: 40,
+                marginBottom: 80
+        },
+
+        title: {
+                 text:null
+        },
+
+        xAxis: {
+                categories: [' HYDROCODONE/ACETAMINOPHEN','LISINOPRIL', 'CEPHALEXIN', 'BLOOD SUGAR DIAGNOSTIC', 'MOEXIPRIL/HYDROCHLOROTHIAZIDE', 'MIRABEGRON', 'MODAFINIL', 'MOMETASONE/FORMOTEROL'],
+                labels: {
+                        rotation:90
+                }
+        },
+        yAxis: {
+                categories: [['Actual'],'Synthetic'],
+                text: 'Type of data',
+                labels: {
+                        text:'Actual'
+
+                
+                }
+         },
+
+        colorAxis: {
+                min: 1,
+                max:15,
+                minColor: '#0080FF',
+                maxColor: '#FFFF00'
+        },
+
+        legend: {
+                align: 'left',
+                layout: 'vertical',
+                margin: 0,
+                verticalAlign: 'top',
+                y:10,
+                symbolHeight:250
+        },
+
+        tooltip: {
+                formatter: function () {
+                        return '<b>' + this.series.xAxis.categories[this.point.x] + '</b>' +
+                        this.point.value + '</b>' + this.series.yAxis.categories[this.point.y] + '</b>';
+                }
+        },
+
+        series: [{
+                borderWidth: 0,
+                data: [[5, 2, 0], [2, 3, 0], [0, 2, 0], [6, 3, 8], [2, 2.0, 2.2]],
+                dataLabels: {
+
+                }
+
+        }]
+
+        });
+    });
+
+        </script>
+        </head>
+        <body>
+                <div id="container" style="height: 350px; width: 500px; margin:auto"></div>
+        </body>
+</html>
